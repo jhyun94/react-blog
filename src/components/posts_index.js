@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Connect } from 'react-redux';
 
 class PostsIndex extends Component {
 
@@ -10,3 +11,10 @@ class PostsIndex extends Component {
 }
 
 export default PostsIndex;
+
+// function mapStateToProps(state){
+// 	return 
+// }
+
+
+
