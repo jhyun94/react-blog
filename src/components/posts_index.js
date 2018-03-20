@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-import { Connect } from 'react-redux';
+import { connect } from 'react-redux';
+
+import { fetchPosts } from '../actions'
 
 class PostsIndex extends Component {
+
+	componentDidMount(){
+		this.props.fetchPosts();
+	}
 
 	render(){
 		return (
@@ -10,11 +16,8 @@ class PostsIndex extends Component {
 	}
 }
 
-export default PostsIndex;
 
-// function mapStateToProps(state){
-// 	return 
-// }
 
+export default connect(null, {fetchPosts})(PostsIndex);
 
 

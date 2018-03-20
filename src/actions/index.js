@@ -7,7 +7,7 @@ export function fetchPosts() {
 	const data = axios.get(`${ROOT_URL}/posts?key=jonjon1`);
 
 	return {
-		type: ALL_POSTS,
+		type: FETCH_POSTS,
 		payload: data
 	}
 }
