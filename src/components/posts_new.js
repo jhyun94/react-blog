@@ -27,14 +27,14 @@ class PostNew extends Component {
 				/>
 
 				<Field
-					label='Tags'
-					name='title'
+					label='Categories'
+					name='categories'
 					component={this.renderInput}
 				/>
 
 				<Field
 					label='Content'
-					name='title'
+					name='content'
 					component={this.renderInput}
 				/>
 
@@ -44,8 +44,26 @@ class PostNew extends Component {
 	}
 }
 
+function validate(values){
+	const errors = {};
+
+	if (!values.title){
+		errors.title = 'Please enter a title';
+	}
+
+	if (!values.categories){
+		errors.title = 'Please enter a category';
+	}
+
+	if (!values.content){
+		errors.title = 'Please enter some content';
+	}
+
+	return errors;
+}
 
 export default reduxForm({
+	validate,
 	form: 'newPostForm'
 })(PostNew)
 
