@@ -13,8 +13,9 @@ export function fetchPosts() {
 	}
 }
 
-export function createPost(data) {
-	const request = axios.post(`${ROOT_URL}/posts?key=jonjon1`, data);
+export function createPost(data, callback) {
+	const request = axios.post(`${ROOT_URL}/posts?key=jonjon1`, data)
+		.then( () => callback())
 
 	return {
 		type: CREATE_POST,
