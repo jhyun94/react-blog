@@ -4,7 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 class PostNew extends Component {
 
 	renderInput(field){
-		console.log(field);
 		return (
 			<div className="form-group">
 				<label>{field.label}</label>
@@ -13,13 +12,19 @@ class PostNew extends Component {
 					type="text"
 					{...field.input}
 				 />
+				 {field.meta.error}
 			</div>
 		)
 	}
 
+	onSubmit(data){
+		console.log(data)
+	}
+
 	render(){
+		const { handleSubmit} = this.props
 		return (
-			<form>
+			<form onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
 				<Field
 					label='Title'
 					name='title'
@@ -38,7 +43,7 @@ class PostNew extends Component {
 					component={this.renderInput}
 				/>
 
-
+				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
 		)
 	}
