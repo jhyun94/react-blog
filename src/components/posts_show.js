@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPost } from '../actions';
 
 class PostShow extends Component {
 
@@ -9,4 +11,11 @@ class PostShow extends Component {
 	}
 }
 
-export default PostShow;
+function mapStateToProps({posts}, ownProps){
+	return { post: posts[ownProps.match.params.id]}
+}
+
+export default connect(mapStateToProps, { fetchPost})(PostShow);
+
+
+
