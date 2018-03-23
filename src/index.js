@@ -13,9 +13,11 @@ import PostsNew from './components/posts_new';
 
 ReactDOM.render(
 	<BrowserRouter>
-		<Switch>
-			<Route path='/posts/new' component={PostsNew}/>
-			<Route path='/' component={PostsIndex}/>
-		</Switch>
+		<div>
+			<Switch>
+				<Route path='/posts/new' component={PostsNew}/>
+				<Route path='/' component={PostsIndex}/>
+			</Switch>
+		</div>
 	</BrowserRouter>
   , document.querySelector('.container'));
