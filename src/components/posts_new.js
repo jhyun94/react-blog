@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+
+import {createPost} from '../actions';
 
 class PostsNew extends Component {
 
 	inputField(field){
-		console.log(field)
 		return (
 			<div className="form-group">
 				<label>{field.label}</label>
@@ -16,7 +18,7 @@ class PostsNew extends Component {
 	}
 
 	onSubmit(values){
-		console.log(values);
+		this.props.createPost(values);
 	}
 
 	render(){
@@ -53,7 +55,6 @@ class PostsNew extends Component {
 
 export default reduxForm({
 	form: 'post'
-})(PostsNew);
-
+})(connect(null, {createPost})(PostsNew))
 
 

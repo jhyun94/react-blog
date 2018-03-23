@@ -2,20 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reducer from './reducers/index';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import reduxPromise from 'redux-promise'
 
 import PostsIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
 
 
 
-// const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStore(reducer);
+const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 
 
 ReactDOM.render(
-	<Provider store={store}>
+	<Provider store={createStoreWithMiddleware(reducer)}>
 		<BrowserRouter>
 			<div>
 				<Switch>
