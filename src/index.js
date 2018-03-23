@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import PostsIndex from './components/posts_index';
+
 
 
 // const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -7,7 +11,9 @@ import ReactDOM from 'react-dom';
 
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-
-  </Provider>
+	<BrowserRouter>
+		<Switch>
+			<Route path='/' component={PostsIndex}/>
+		</Switch>
+	</BrowserRouter>
   , document.querySelector('.container'));
