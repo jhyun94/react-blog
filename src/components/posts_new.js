@@ -13,6 +13,9 @@ class PostsNew extends Component {
 				<label>{field.label}</label>
 				<input
 				className="form-control" type="text" {...field.input}/>
+				<div>
+					{field.meta.touched && field.meta.error ? field.meta.error : ''}
+				</div>
 			</div>
 		)
 	}
@@ -53,9 +56,28 @@ class PostsNew extends Component {
 	}
 }
 
+function validate(field){
+	let errors = {};
+
+	if(!field.title) {
+		errors.title = 'Enter a title';
+	}
+
+	if(!field.categories) {
+		errors.categories = 'Enter a category';
+	}
+
+	if(!field.content) {
+		errors.content = 'Enter some content';
+	}
+
+	return errors;
+
+}	
 
 
 export default reduxForm({
+	validate: validate,
 	form: 'post'
 })(connect(null, {createPost})(PostsNew))
 
