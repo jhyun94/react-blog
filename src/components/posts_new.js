@@ -8,12 +8,13 @@ import {createPost} from '../actions';
 class PostsNew extends Component {
 
 	inputField(field){
+		const className = `form-group ${field.meta.touched && field.meta.error ? 'has-danger' : ''}`;
 		return (
-			<div className="form-group">
+			<div className={className}>
 				<label>{field.label}</label>
 				<input
 				className="form-control" type="text" {...field.input}/>
-				<div>
+				<div className="text-help">
 					{field.meta.touched && field.meta.error ? field.meta.error : ''}
 				</div>
 			</div>
