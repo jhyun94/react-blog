@@ -1,8 +1,7 @@
 import _ from 'lodash';
 import { CREATE_POST, FETCH_POSTS } from '../actions';
 
-export default function(state, action){
-	console.log(action);
+export default function(state=null, action){
 	switch(action.type){
 		case CREATE_POST:
 			return {...state, [action.payload.data.id]: action.payload.data}
