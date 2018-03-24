@@ -12,20 +12,28 @@ class PostsShow extends Component {
 	}
 
 	render(){
-		const {posts} = this.props
-		if(!posts){
+		const {post} = this.props
+
+		if(!post){
 			return <div>..loading</div>
 		}
 		return (
-			<Link to='/'>
-				Back
-			</Link>
+			<div>
+				<Link to='/'>
+					Back
+				</Link>
+				<div>
+					<h1>{post.title}</h1>
+					<h3>Categories: {post.categories}</h3>
+					<p>{post.content}</p>
+				</div>
+			</div>
 		)
 	}
 }
 
-function mapStateToProps({posts}){
-	return { posts }
+function mapStateToProps({posts}, ownProps){
+	return { post: posts[ownProps.match.params.id] }
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostsShow);
