@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchPost } from '../actions';
+import { fetchPost, deletePost } from '../actions';
 
 class PostsShow extends Component {
 
 	componentDidMount(){
 		const id = this.props.match.params.id;
 		this.props.fetchPost(id)
+	}
+
+	onPostDelete(){
+		const id = this.props.match.params.id;
+		this.props.deletePost(id);
 	}
 
 	render(){
@@ -22,6 +27,7 @@ class PostsShow extends Component {
 				<Link to='/'>
 					Back
 				</Link>
+				<button onClick={this.onPostDelete.bind(this)}>Delete Post</button>
 				<div>
 					<h1>{post.title}</h1>
 					<h3>Categories: {post.categories}</h3>
@@ -36,4 +42,4 @@ function mapStateToProps({posts}, ownProps){
 	return { post: posts[ownProps.match.params.id] }
 }
 
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPost, deletePost })(PostsShow);

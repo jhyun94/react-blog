@@ -33,3 +33,7 @@ export function fetchPost(id){
 		payload: request
 	}
 }
+
+export function deletePost(id){
+	console.log(id);
+}
